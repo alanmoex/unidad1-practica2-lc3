@@ -1,5 +1,6 @@
 import AllBeers from "../allBeers/AllBeers";
 import AvailableBeers from "../availableBeers/AvailableBeers";
+import BeerStyles from "../beerStyles/BeerStyles";
 import CountStyles from "../countSyles/CountStyles";
 
 const beers = [
@@ -74,9 +75,17 @@ const Beers = () => {
         <AvailableBeers beers={beers} />
       </div>
       <div>
-        <h2 className="d-flex justify-content-center">Estilos</h2>
+        <h2 className="d-flex justify-content-center">
+          Cantidad de ipas y red
+        </h2>
         <div className="d-flex justify-content-center">
           <CountStyles beers={beers} />
+        </div>
+      </div>
+      <div>
+        <h2 className="d-flex justify-content-center">Estilos que tenemos</h2>
+        <div className="d-flex justify-content-center">
+          <BeerStyles beers={beers} />
         </div>
       </div>
     </>

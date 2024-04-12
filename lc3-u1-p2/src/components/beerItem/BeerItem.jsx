@@ -4,11 +4,11 @@ const BeerItem = ({ name, style, price }) => {
   const dolarTipeOfChange = 1000;
 
   return (
-    <div>
-      <h2>{name}</h2>
-      <h3>{style}</h3>
-      <p>${price * dolarTipeOfChange}</p>
-    </div>
+    <ul>
+      <li>{name}</li>
+      <li>{style}</li>
+      <li>${price * dolarTipeOfChange}</li>
+    </ul>
   );
 };
 

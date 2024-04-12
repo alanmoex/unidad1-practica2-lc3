@@ -1,4 +1,6 @@
 import AllBeers from "../allBeers/AllBeers";
+import AvailableBeers from "../availableBeers/AvailableBeers";
+import CountStyles from "../countSyles/CountStyles";
 
 const beers = [
   { id: 1, beerName: "American", beerStyle: "IPA", price: 3, available: true },
@@ -63,7 +65,20 @@ const beers = [
 const Beers = () => {
   return (
     <>
-      <AllBeers beers={beers} />
+      <div>
+        <h2 className="d-flex justify-content-center">Todas las birras</h2>
+        <AllBeers beers={beers} />
+      </div>
+      <div>
+        <h2 className="d-flex justify-content-center">Birras disponibles</h2>
+        <AvailableBeers beers={beers} />
+      </div>
+      <div>
+        <h2 className="d-flex justify-content-center">Estilos</h2>
+        <div className="d-flex justify-content-center">
+          <CountStyles beers={beers} />
+        </div>
+      </div>
     </>
   );
 };

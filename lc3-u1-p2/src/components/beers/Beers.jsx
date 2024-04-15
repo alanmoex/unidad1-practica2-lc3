@@ -2,9 +2,18 @@ import AllBeers from "../allBeers/AllBeers";
 import AvailableBeers from "../availableBeers/AvailableBeers";
 import BeerStyles from "../beerStyles/BeerStyles";
 import CountStyles from "../countSyles/CountStyles";
+import ChangeDollar from "../changeDollar/ChangeDollar";
 import PropTypes from "prop-types";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
 
-const Beers = ({ dollarValue }) => {
+const Beers = () => {
+  const [dollarValue, setDollarValue] = useState(1);
+
+  const saveDollarValueHandler = (enteredDollarValue) => {
+    setDollarValue(enteredDollarValue);
+  };
+
   const beers = [
     {
       id: 1,
@@ -74,6 +83,11 @@ const Beers = ({ dollarValue }) => {
   return (
     <>
       <div>
+        <ChangeDollar
+          onDollarValue={saveDollarValueHandler}
+          dollarValue={dollarValue}
+        ></ChangeDollar>
+        <Button>Esconder componente</Button>
         <h2 className="d-flex justify-content-center">Todas las birras</h2>
         <AllBeers beers={beers} />
       </div>

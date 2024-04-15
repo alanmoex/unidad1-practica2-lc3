@@ -18,7 +18,7 @@ function NewBeer({ onNewBeerSaved }) {
     setEnteredPrice(event.target.value);
   };
   const changeAvailabilityHandler = (event) => {
-    setEnteredAvailability(event.target.value);
+    setEnteredAvailability(event.target.checked);
   };
 
   const sumbitBeerHandler = (event) => {
@@ -83,9 +83,10 @@ function NewBeer({ onNewBeerSaved }) {
             <Col md={6}>
               <Form.Group className="mb-3" controlId="bookPageCount">
                 <Form.Label>Disponibilidad</Form.Label>
-                <Form.Switch
+                <Form.Check
+                  type="switch"
                   onChange={changeAvailabilityHandler}
-                  value={enteredAvailability}
+                  checked={enteredAvailability}
                 />
               </Form.Group>
             </Col>

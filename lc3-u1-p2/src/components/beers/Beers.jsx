@@ -8,14 +8,6 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import NewBeer from "../newBeer/NewBeer";
 
-const saveNewBeerHandler = (enteredNewBeer) => {
-  const bookData = {
-    ...enteredNewBeer,
-    id: Math.random().toString(),
-  };
-  console.log(bookData);
-};
-
 const Beers = () => {
   const [dollarValue, setDollarValue] = useState(1);
   const [showComponent, setShowComponent] = useState(false);
@@ -32,7 +24,7 @@ const Beers = () => {
       : setButtonDolarText("mostrar");
   };
 
-  const beers = [
+  let beers = [
     {
       id: 1,
       beerName: "American",
@@ -98,6 +90,16 @@ const Beers = () => {
     },
   ];
 
+  const [beersArray, setBeersArray] = useState(beers);
+
+  const saveNewBeerHandler = (enteredNewBeer) => {
+    const newBeer = {
+      ...enteredNewBeer,
+      id: Math.random().toString(),
+    };
+    setBeersArray([...beersArray, newBeer]);
+  };
+
   return (
     <>
       <div hidden={showComponent}>
@@ -111,28 +113,28 @@ const Beers = () => {
       </div>
       <div>
         <h2 className="d-flex justify-content-center">Todas las birras</h2>
-        <AllBeers beers={beers} />
+        <AllBeers beers={beersArray} />
       </div>
       <div>
         <h2 className="d-flex justify-content-center">Birras disponibles</h2>
-        <AvailableBeers beers={beers} />
+        <AvailableBeers beers={beersArray} />
       </div>
       <div>
         <h2 className="d-flex justify-content-center">
           Cantidad de ipas y red
         </h2>
         <div className="d-flex justify-content-center">
-          <CountStyles beers={beers} />
+          <CountStyles beers={beersArray} />
         </div>
       </div>
       <div>
         <h2 className="d-flex justify-content-center">Estilos que tenemos</h2>
         <div className="d-flex justify-content-center">
-          <BeerStyles beers={beers} />
+          <BeerStyles beers={beersArray} />
         </div>
       </div>
       <div className="d-flex justify-content-center">
-        <NewBeer />
+        <NewBeer onNewBeerSaved={saveNewBeerHandler} />
       </div>
     </>
   );

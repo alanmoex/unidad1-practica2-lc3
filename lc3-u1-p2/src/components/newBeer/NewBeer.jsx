@@ -2,7 +2,7 @@
 import { Card, Form, Button, Row, Col } from "react-bootstrap";
 import { useState } from "react";
 
-function NewBeer(onNewBeerSaved) {
+function NewBeer({ onNewBeerSaved }) {
   const [enteredBeerName, setEnteredBeerName] = useState("");
   const [enteredBeerStyle, setEnteredBeerStyle] = useState("");
   const [enteredPrice, setEnteredPrice] = useState("");
@@ -28,11 +28,15 @@ function NewBeer(onNewBeerSaved) {
       id: null,
       beerName: enteredBeerName,
       beerStyle: enteredBeerStyle,
-      price: enteredPrice,
+      price: parseInt(enteredPrice, 10),
       available: enteredAvailability,
     };
 
     onNewBeerSaved(newBeer);
+    setEnteredBeerName("");
+    setEnteredBeerStyle("");
+    setEnteredPrice("");
+    setEnteredAvailability(false);
   };
 
   return (

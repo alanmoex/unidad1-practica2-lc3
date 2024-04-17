@@ -4,10 +4,10 @@ const BeerItem = ({ name, style, price }) => {
   const dolarTipeOfChange = 1000;
 
   return (
-    <ul>
-      <li>{name}</li>
-      <li>{style}</li>
-      <li>${price * dolarTipeOfChange}</li>
+    <ul className="list-group">
+      <li className="list-group-item">{name}</li>
+      <li className="list-group-item">{style}</li>
+      <li className="list-group-item">${price * dolarTipeOfChange}</li>
     </ul>
   );
 };

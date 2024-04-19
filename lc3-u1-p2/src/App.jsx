@@ -1,9 +1,18 @@
 import Beers from "./components/beers/Beers";
+import ChangeDollar from "./components/changeDollar/ChangeDollar";
 
 function App() {
+  let dollarValue = 1;
+
+  const saveDollarValueHandler = (enteredDollarValue) => {
+    dollarValue = enteredDollarValue;
+    console.log(dollarValue);
+  };
+
   return (
     <>
-      <Beers></Beers>
+      <ChangeDollar onDollarValue={saveDollarValueHandler} />
+      <Beers dollarValue={dollarValue}></Beers>
     </>
   );
 }

@@ -25,4 +25,5 @@ export default ChangeDollar;
 
 ChangeDollar.propTypes = {
   onDollarValue: PropTypes.any,
+  dollarValue: PropTypes.number,
 };

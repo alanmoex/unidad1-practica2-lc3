@@ -6,12 +6,30 @@ import ChangeDollar from "../changeDollar/ChangeDollar";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+import NewBeer from "../newBeer/NewBeer";
+
+const saveNewBeerHandler = (enteredNewBeer) => {
+  const bookData = {
+    ...enteredNewBeer,
+    id: Math.random().toString(),
+  };
+  console.log(bookData);
+};
 
 const Beers = () => {
   const [dollarValue, setDollarValue] = useState(1);
+  const [showComponent, setShowComponent] = useState(false);
+  const [buttonDolarText, setButtonDolarText] = useState("ocultar");
 
   const saveDollarValueHandler = (enteredDollarValue) => {
     setDollarValue(enteredDollarValue);
+  };
+
+  const showComponentHandler = () => {
+    setShowComponent(!showComponent);
+    showComponent
+      ? setButtonDolarText("ocultar")
+      : setButtonDolarText("mostrar");
   };
 
   const beers = [
@@ -82,12 +100,16 @@ const Beers = () => {
 
   return (
     <>
-      <div>
+      <div hidden={showComponent}>
         <ChangeDollar
           onDollarValue={saveDollarValueHandler}
           dollarValue={dollarValue}
         ></ChangeDollar>
-        <Button>Esconder componente</Button>
+      </div>
+      <div className="d-flex justify-content-center">
+        <Button onClick={showComponentHandler}>{buttonDolarText}</Button>
+      </div>
+      <div>
         <h2 className="d-flex justify-content-center">Todas las birras</h2>
         <AllBeers beers={beers} />
       </div>
@@ -108,6 +130,9 @@ const Beers = () => {
         <div className="d-flex justify-content-center">
           <BeerStyles beers={beers} />
         </div>
+      </div>
+      <div className="d-flex justify-content-center">
+        <NewBeer />
       </div>
     </>
   );
